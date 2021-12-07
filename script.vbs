@@ -25,7 +25,7 @@ WScript.Sleep 500
 CreateObject("WScript.Shell").Run "vol.vbs"
 
 'audio player
-oPlayer.URL = "r7.mp3"
+oPlayer.URL = "r7.mp3" '<--- enter your audio file name in the ""
 oPlayer.controls.play 
 While oPlayer.playState <> 1
   WScript.Sleep 16000 '<--- enter the duration of the sound in ms
