@@ -28,7 +28,7 @@ CreateObject("WScript.Shell").Run "vol.vbs"
 oPlayer.URL = "example.mp3" '<--- AUDIO FILE NAME
 oPlayer.controls.play 
 While oPlayer.playState <> 1
-  WScript.Sleep 16000 '<--- AUIDO DURATION IN MS
+  WScript.Sleep 16000 '<--- AUDIO DURATION IN MS
 Wend
 oPlayer.close
 
